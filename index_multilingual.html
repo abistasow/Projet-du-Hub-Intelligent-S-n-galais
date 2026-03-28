@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بصمة التوجيه السنغالية - Senegal Smart Guide Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #FFD700;
+            --accent-color: #D32F2F;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f5f5f5;
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+        
+        html[lang="ar"] {
+            direction: rtl;
+        }
+        
+        html[lang="fr"] {
+            direction: ltr;
+        }
+        
+        html[lang="en"] {
+            direction: ltr;
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1b5e20 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            font-size: 32px;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+            color: var(--secondary-color);
+        }
+        /* LANGUAGE SELECTOR */
+        
+        .lang-selector {
+            display: flex;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .lang-btn {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        
+        .lang-btn.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        /* HERO SECTION */
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1b5e20 50%, var(--accent-color) 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        /* MAIN CONTAINER */
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* SECTIONS */
+        
+        section {
+            padding: 80px 20px;
+        }
+        
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        /* GRID */
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-right: 5px solid var(--accent-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        html[lang="fr"] .card,
+        html[lang="en"] .card {
+            border-right: none;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        /* FOOTER */
+        
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            nav {
+                display: none;
+            }
+            section h2 {
+                font-size: 28px;
+            }
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+        
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .doc-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .doc-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .doc-header {
+            background: linear-gradient(135deg, var(--primary-color), #1b5e20);
+            color: white;
+            padding: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .doc-body {
+            padding: 20px;
+        }
+        
+        .doc-body p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .doc-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 0;
+            border-bottom: 2px solid var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>🇸🇳</span>
+                <div>
+                    <div data-ar="بصمة التوجيه" data-fr="Guide Intelligent" data-en="Smart Guide" style="font-size: 18px;">بصمة التوجيه</div>
+                    <div style="font-size: 12px; opacity: 0.9;">Senegal Smart Guide Hub</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <nav>
+                    <a href="#problem" data-ar="المشكلة" data-fr="Problème" data-en="Problem">المشكلة</a>
+                    <a href="#solution" data-ar="الحل" data-fr="Solution" data-en="Solution">الحل</a>
+                    <a href="#documents" data-ar="المستندات" data-fr="Documents" data-en="Documents">المستندات</a>
+                </nav>
+                <div class="lang-selector">
+                    <button class="lang-btn active" onclick="changeLanguage('ar')">العربية</button>
+                    <button class="lang-btn" onclick="changeLanguage('fr')">Français</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-ar="🎯 مشروع بصمة التوجيه السنغالية" data-fr="🎯 Projet du Hub Intelligent Sénégalais" data-en="🎯 Senegal Smart Guide Hub Project">🎯 مشروع بصمة التوجيه السنغالية</h1>
+            <p data-ar="نظام ذكي شامل لحماية الحجاج والمعتمرين السنغاليين في الحرمين الشريفين" data-fr="Un système intelligent complet pour protéger les pèlerins sénégalais aux Lieux Saints" data-en="A comprehensive intelligent system to protect Senegalese pilgrims at the Holy Sites">نظام ذكي شامل لحماية الحجاج والمعتمرين السنغاليين في الحرمين الشريفين</p>
+            <a href="#documents" class="cta-button" data-ar="📄 اطلع على المستندات" data-fr="📄 Consulter les documents" data-en="📄 View Documents">📄 اطلع على المستندات</a>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section id="problem" class="container" style="background-color: var(--bg-light);">
+        <h2 data-ar="🔴 التحديات والمشكلة" data-fr="🔴 Les Défis et le Problème" data-en="🔴 Challenges and Problems">🔴 التحديات والمشكلة</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⏱️ <span data-ar="وقت البحث الطويل" data-fr="Temps de recherche long" data-en="Long Search Time">وقت البحث الطويل</span></h3>
+                <p data-ar="عمليات بحث قد تستغرق 4-6 ساعات أو حتى أياماً للعثور على الحاج الضائع" data-fr="Les opérations de recherche peuvent prendre 4 à 6 heures ou même des jours" data-en="Search operations can take 4-6 hours or even days">عمليات بحث قد تستغرق 4-6 ساعات أو حتى أياماً</p>
+            </div>
+            <div class="card">
+                <h3>💬 <span data-ar="الحاجز اللغوي" data-fr="Barrière linguistique" data-en="Language Barrier">الحاجز اللغوي</span></h3>
+                <p data-ar="معظم الخدمات بالعربية والإنجليزية فقط، والحجاج يتحدثون الولوفية" data-fr="La plupart des services ne sont qu'en arabe et anglais" data-en="Most services only in Arabic and English">معظم الخدمات بالعربية والإنجليزية فقط</p>
+            </div>
+            <div class="card">
+                <h3>👴 <span data-ar="كبار السن والتكنولوجيا" data-fr="Personnes âgées et technologie" data-en="Elderly & Technology">كبار السن والتكنولوجيا</span></h3>
+                <p data-ar="نسبة كبيرة من الحجاج لا يستطيعون استخدام التطبيقات المعقدة" data-fr="Un grand pourcentage de pèlerins ne peut pas utiliser les applications complexes" data-en="Many pilgrims cannot use complex applications">نسبة كبيرة من الحجاج لا يستطيعون استخدام التطبيقات</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section id="solution" class="container">
+        <h2 data-ar="💡 الحل المقترح" data-fr="💡 Solution Proposée" data-en="💡 Proposed Solution">💡 الحل المقترح</h2>
+        <div class="grid">
+            <div class="card" style="border-color: var(--primary-color); border-top: 5px solid var(--primary-color); border-right: none;">
+                <h3>📿 <span data-ar="السوار الذكي" data-fr="Bracelet Intelligent" data-en="Smart Band">السوار الذكي</span></h3>
+                <p data-ar="سوار بسيط بتقنية NFC + QR Code، بطارية 60 يوماً" data-fr="Un bracelet simple avec technologie NFC + Code QR, batterie 60 jours" data-en="Simple bracelet with NFC + QR Code, 60-day battery">سوار بسيط بتقنية NFC، بطارية 60 يوماً</p>
+            </div>
+            <div class="card" style="border-color: var(--primary-color); border-top: 5px solid var(--primary-color); border-right: none;">
+                <h3>📢 <span data-ar="نظام التنبيهات" data-fr="Système d'alertes" data-en="Alert System">نظام التنبيهات</span></h3>
+                <p data-ar="إرسال تنبيهات صوتية بـ اللغة الولوفية" data-fr="Envoi d'alertes vocales en langue wolof" data-en="Voice alerts in Wolof language">تنبيهات صوتية بـ اللغة الولوفية</p>
+            </div>
+            <div class="card" style="border-color: var(--primary-color); border-top: 5px solid var(--primary-color); border-right: none;">
+                <h3>📱 <span data-ar="تطبيق المتطوعين" data-fr="Application Bénévoles" data-en="Volunteer App">تطبيق المتطوعين</span></h3>
+                <p data-ar="تطبيق احترافي للمتطوعين والعاملين" data-fr="Application professionnelle pour les bénévoles et le personnel" data-en="Professional app for volunteers and staff">تطبيق احترافي للمتطوعين والعاملين</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTS SECTION -->
+    <section id="documents" class="container" style="background-color: var(--bg-light);">
+        <h2 data-ar="📄 المستندات الرسمية" data-fr="📄 Documents Officiels" data-en="📄 Official Documents">📄 المستندات الرسمية</h2>
+        <div class="doc-grid">
+            <div class="doc-card">
+                <div class="doc-header" data-ar="📄 المقترح الكامل" data-fr="📄 Proposition Complète" data-en="📄 Full Proposal">📄 <span data-ar="المقترح الكامل" data-fr="Proposition Complète" data-en="Full Proposal">المقترح الكامل</span></div>
+                <div class="doc-body">
+                    <p data-ar="الوثيقة الرئيسية الشاملة تغطي جميع جوانب المشروع" data-fr="Document principal complet couvrant tous les aspects du projet" data-en="Main comprehensive document covering all project aspects">الوثيقة الرئيسية الشاملة</p>
+                    <a href="Senegal_Smart_Guide_Hub_Proposal.md" class="doc-link" data-ar="اقرأ الكامل →" data-fr="Lire la suite →" data-en="Read More →">اقرأ الكامل →</a>
+                </div>
+            </div>
+            <div class="doc-card">
+                <div class="doc-header">⚡ <span data-ar="الملخص التنفيذي" data-fr="Résumé Exécutif" data-en="Executive Summary">الملخص التنفيذي</span></div>
+                <div class="doc-body">
+                    <p data-ar="ملخص مختصر جداً مناسب للعروض السريعة" data-fr="Un résumé très concis adapté aux présentations courtes" data-en="Very brief summary suitable for quick presentations">ملخص مختصر للعروض السريعة</p>
+                    <a href="Executive_Summary_AR.md" class="doc-link" data-ar="اقرأ →" data-fr="Lire →" data-en="Read →">اقرأ →</a>
+                </div>
+            </div>
+            <div class="doc-card">
+                <div class="doc-header">❓ <span data-ar="أسئلة شائعة" data-fr="Questions Fréquentes" data-en="FAQ">أسئلة شائعة</span></div>
+                <div class="doc-body">
+                    <p data-ar="30+ سؤال مع إجابات احترافية" data-fr="30+ questions avec réponses professionnelles" data-en="30+ questions with professional answers">30+ سؤال وإجابات</p>
+                    <a href="FAQ_Comprehensive.md" class="doc-link" data-ar="اقرأ الأسئلة →" data-fr="Voir les questions →" data-en="View Questions →">اقرأ →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="hero" style="margin-top: 40px;">
+        <h2 data-ar="🚀 هل أنت مهتم؟" data-fr="🚀 Êtes-vous intéressé?" data-en="🚀 Are You Interested?">🚀 هل أنت مهتم؟</h2>
+        <p data-ar="تواصل معنا لمزيد من المعلومات" data-fr="Contactez-nous pour plus d'informations" data-en="Contact us for more information">تواصل معنا الآن</p>
+        <a href="mailto:smart.guide.senegal@gov.sn" class="cta-button">📧 <span data-ar="البريد الإلكتروني" data-fr="Email" data-en="Email">البريد</span></a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span data-ar="مشروع بصمة التوجيه السنغالية" data-fr="Projet Senegal Smart Guide Hub" data-en="Senegal Smart Guide Hub Project">مشروع بصمة التوجيه السنغالية</span> | <span data-ar="جميع الحقوق محفوظة" data-fr="Tous droits réservés"
+                    data-en="All rights reserved">جميع الحقوق محفوظة</span></p>
+            <p style="margin-top: 10px; opacity: 0.6;"><span data-ar="" التثنية الدقيقة مفتاح النجاح "" data-fr="" La précision est la clé du succès "" data-en="" Precision is the key to success "">"التثنية الدقيقة مفتاح النجاح"</span></p>
+        </div>
+    </footer>
+
+    <script>
+        function changeLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Find and activate the correct button
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.trim() === (lang === 'ar' ? 'العربية' : lang === 'fr' ? 'Français' : 'English')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update HTML lang attribute and direction
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update ALL translatable elements (جميع العناصر)
+            document.querySelectorAll('[data-ar], [data-fr], [data-en]').forEach(el => {
+                const attr = `data-${lang}`;
+                if (el.hasAttribute(attr)) {
+                    el.textContent = el.getAttribute(attr);
+                    el.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+                }
+            });
+
+            // Update page title
+            const titles = {
+                ar: 'بصمة التوجيه السنغالية - Senegal Smart Guide Hub',
+                fr: 'Guide Intelligent Sénégal - Senegal Smart Guide Hub',
+                en: 'Senegal Smart Guide Hub - Smart Pilgrimage Protection'
+            };
+            document.title = titles[lang];
+
+            // Save preference to localStorage
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Trigger animation
+            document.body.style.opacity = '0.8';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        }
+
+        // Load saved language preference when page loads
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ar';
+            // Apply the saved language immediately
+            changeLanguage(savedLang);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

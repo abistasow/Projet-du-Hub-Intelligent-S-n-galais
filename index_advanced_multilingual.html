@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بصمة التوجيه السنغالية - Senegal Smart Guide Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #FFD700;
+            --accent-color: #D32F2F;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f5f5f5;
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        html[lang="ar"] {
+            direction: rtl;
+        }
+        
+        html[lang="fr"] {
+            direction: ltr;
+        }
+        
+        html[lang="en"] {
+            direction: ltr;
+        }
+        /* HEADER */
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1b5e20 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            font-size: 28px;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        nav a:hover,
+        nav a.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        /* LANGUAGE SELECTOR */
+        
+        .lang-selector {
+            display: flex;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .lang-btn {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        
+        .lang-btn.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        /* PAGES CONTAINER */
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* HERO SECTION */
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1b5e20 50%, var(--accent-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        /* BUTTONS */
+        
+        .cta-button,
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover,
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        /* CONTAINER */
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* SECTIONS */
+        
+        section {
+            padding: 60px 20px;
+        }
+        
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        /* GRID */
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-right: 5px solid var(--accent-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        html[lang="fr"] .card,
+        html[lang="en"] .card {
+            border-right: none;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        /* FOOTER */
+        
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: start;
+            margin-bottom: 30px;
+        }
+        
+        html[lang="ar"] .footer-content {
+            text-align: right;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        /* RESPONSIVE */
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            nav {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            section h2 {
+                font-size: 28px;
+            }
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+        /* TABLE STYLES */
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: start;
+        }
+        
+        html[lang="ar"] table th {
+            text-align: right;
+        }
+        
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        table tr:hover {
+            background: var(--bg-light);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>🇸🇳</span>
+                <div>
+                    <div data-ar="بصمة التوجيه" data-fr="Guide Intelligent" data-en="Smart Guide">بصمة التوجيه</div>
+                    <div style="font-size: 11px; opacity: 0.9;">Senegal Smart Guide Hub</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <nav id="mainNav">
+                    <a href="#" onclick="showPage('home'); return false;" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a>
+                    <a href="#" onclick="showPage('technical'); return false;" data-ar="التقنية" data-fr="Technique" data-en="Technical">التقنية</a>
+                    <a href="#" onclick="showPage('team'); return false;" data-ar="الفريق" data-fr="Équipe" data-en="Team">الفريق</a>
+                    <a href="#" onclick="showPage('contact'); return false;" data-ar="الاتصال" data-fr="Contact" data-en="Contact">الاتصال</a>
+                </nav>
+                <div class="lang-selector">
+                    <button class="lang-btn active" onclick="changeLanguage('ar')">العربية</button>
+                    <button class="lang-btn" onclick="changeLanguage('fr')">Français</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         PAGE 1: HOME
+         ============================================ -->
+    <div id="home" class="page active">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 data-ar="🎯 مشروع بصمة التوجيه السنغالية" data-fr="🎯 Projet du Hub Intelligent Sénégalais" data-en="🎯 Senegal Smart Guide Hub Project">🎯 مشروع بصمة التوجيه السنغالية</h1>
+                <p data-ar="نظام ذكي شامل لحماية الحجاج والمعتمرين السنغاليين في الحرمين الشريفين" data-fr="Un système intelligent complet pour protéger les pèlerins sénégalais aux Lieux Saints" data-en="A comprehensive intelligent system to protect Senegalese pilgrims at the Holy Sites">نظام ذكي شامل لحماية الحجاج والمعتمرين السنغاليين</p>
+            </div>
+        </section>
+
+        <!-- PROBLEMS SECTION -->
+        <section class="container" style="background-color: var(--bg-light);">
+            <h2 data-ar="🔴 التحديات الرئيسية" data-fr="🔴 Défis Principaux" data-en="🔴 Main Challenges">🔴 التحديات الرئيسية</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>⏱️ <span data-ar="وقت البحث" data-fr="Temps de Recherche" data-en="Search Time">وقت البحث</span></h3>
+                    <p data-ar="عمليات بحث قد تستغرق 4-6 ساعات" data-fr="Les opérations de recherche peuvent prendre 4-6 heures" data-en="Search operations can take 4-6 hours">عمليات البحث قد تستغرق 4-6 ساعات أو أكثر</p>
+                </div>
+                <div class="card">
+                    <h3>💬 <span data-ar="الحاجز اللغوي" data-fr="Barrière Linguistique" data-en="Language Barrier">الحاجز اللغوي</span></h3>
+                    <p data-ar="معظم الخدمات بالعربية والإنجليزية فقط" data-fr="La plupart des services sont en arabe et anglais uniquement" data-en="Most services only in Arabic and English">معظم الخدمات بالعربية والإنجليزية فقط</p>
+                </div>
+                <div class="card">
+                    <h3>👴 <span data-ar="كبار السن" data-fr="Personnes Âgées" data-en="Elderly People">كبار السن</span></h3>
+                    <p data-ar="نسبة كبيرة لا يستطيعون استخدام التطبيقات المعقدة" data-fr="Un grand nombre ne peut pas utiliser les applications complexes" data-en="Many cannot use complex applications">نسبة كبيرة لا يستطيعون استخدام التطبيقات المعقدة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTIONS SECTION -->
+        <section class="container">
+            <h2 data-ar="💡 الحلول المقترحة" data-fr="💡 Solutions Proposées" data-en="💡 Proposed Solutions">💡 الحلول المقترحة</h2>
+            <div class="grid">
+                <div class="card" style="border-color: var(--primary-color); border-top: 5px solid var(--primary-color); border-right: none;">
+                    <h3>📿 <span data-ar="السوار الذكي" data-fr="Bracelet Intelligent" data-en="Smart Band">السوار الذكي</span></h3>
+                    <p data-ar="سوار بسيط بتقنية NFC + QR Code، بطارية 60 يوماً" data-fr="Un bracelet simple avec technologie NFC + Code QR, 60 jours d'autonomie" data-en="Simple bracelet with NFC + QR Code, 60-day battery">سوار بسيط بتقنية NFC مع بطارية تدوم 60 يوماً</p>
+                </div>
+                <div class="card" style="border-color: var(--primary-color); border-top: 5px solid var(--primary-color); border-right: none;">
+                    <h3>📢 <span data-ar="نظام التنبيهات" data-fr="Système d'Alertes" data-en="Alert System">نظام التنبيهات</span></h3>
+                    <p data-ar="إرسال تنبيهات صوتية بـ اللغة الولوفية" data-fr="Envoi d'alertes vocales en langue wolof" data-en="Voice alerts in Wolof language">تنبيهات صوتية بـ اللغة الولوفية المحلية</p>
+                </div>
+                <div class="card" style="border-color: var(--primary-color); border-top: 5px solid var(--primary-color); border-right: none;">
+                    <h3>📱 <span data-ar="تطبيق المتطوعين" data-fr="Application Bénévoles" data-en="Volunteer App">تطبيق المتطوعين</span></h3>
+                    <p data-ar="تطبيق احترافي للمتطوعين والعاملين" data-fr="Application professionnelle pour les bénévoles et le personnel" data-en="Professional app for volunteers and staff">تطبيق احترافي سهل الاستخدام للمتطوعين</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS SECTION -->
+        <section class="container" style="background-color: var(--bg-light);">
+            <h2 data-ar="✨ الفوائد المتوقعة" data-fr="✨ Avantages Attendus" data-en="✨ Expected Benefits">✨ الفوائد المتوقعة</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 data-ar="تقليل وقت البحث" data-fr="Réduction du Temps" data-en="Reduce Search Time">⚡ تقليل الوقت</h3>
+                    <p data-ar="من 4-6 ساعات إلى 15 دقيقة فقط" data-fr="De 4-6 heures à seulement 15 minutes" data-en="From 4-6 hours to just 15 minutes">من 4-6 ساعات إلى 15 دقيقة فقط!</p>
+                </div>
+                <div class="card">
+                    <h3 data-ar="زيادة معدل النجاح" data-fr="Augmenter taux de succès" data-en="Increase Success Rate">📈 نسبة النجاح</h3>
+                    <p data-ar="من 85% إلى 100% (جميع الحجاج آمنون)" data-fr="De 85% à 100% (tous les pèlerins en sécurité)" data-en="From 85% to 100% (all pilgrims safe)">من 85% إلى 100% معدل النجاح</p>
+                </div>
+                <div class="card">
+                    <h3 data-ar="تكاليف منخفضة" data-fr="Coûts Réduits" data-en="Low Costs">💰 الكفاءة المالية</h3>
+                    <p data-ar="سوار واحد يكلف 4-6 دولار فقط" data-fr="Un bracelet ne coûte que 4-6 dollars" data-en="Just $4-6 per bracelet">توفير هائل في التكاليف التشغيلية</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         PAGE 2: TECHNICAL
+         ============================================ -->
+    <div id="technical" class="page">
+        <section class="hero">
+            <h1 data-ar="⚙️ المعلومات التقنية" data-fr="⚙️ Informations Techniques" data-en="⚙️ Technical Information">⚙️ المعلومات التقنية</h1>
+        </section>
+
+        <section class="container">
+            <h2 data-ar="🔧 البنية التحتية" data-fr="🔧 Infrastructure" data-en="🔧 Infrastructure">🔧 البنية التحتية</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1️⃣ <span data-ar="السوار الذكي" data-fr="Bracelet Intelligent" data-en="Smart Band">السوار الذكي</span></h3>
+                    <p data-ar="المعالج: ARM Cortex-M0<br>الذاكرة: 512KB<br>التقنية: NFC + QR<br>البطارية: 60 يوم جديد<br>التصنيف: IP67 مقاوم للماء" data-fr="Processeur: ARM Cortex-M0<br>Mémoire: 512KB<br>Technologie: NFC + QR<br>Batterie: 60 jours<br>Classification: IP67 étanche"
+                        data-en="Processor: ARM Cortex-M0<br>Memory: 512KB<br>Technology: NFC + QR<br>Battery: 60 days<br>Rating: IP67 waterproof">المعالج: ARM Cortex-M0<br>الذاكرة: 512KB<br>البطارية: 60 يوم<br>التصنيف: IP67</p>
+                </div>
+                <div class="card">
+                    <h3>2️⃣ <span data-ar="جهاز التنبيه" data-fr="Appareil d'Alerte" data-en="Alert Device">جهاز التنبيه</span></h3>
+                    <p data-ar="التقنية: BLE 5.0<br>المدى: 50-100 متر<br>التردد: تحديث كل 30 ثانية<br>الصوت: لغات متعددة<br>الدقة: GPS متكامل" data-fr="Technologie: BLE 5.0<br>Portée: 50-100 mètres<br>Fréquence: Mise à jour tous les 30 secondes<br>Son: Langues multiples<br>Précision: GPS intégré"
+                        data-en="Technology: BLE 5.0<br>Range: 50-100 meters<br>Frequency: 30 second updates<br>Sound: Multi-language<br>Accuracy: Integrated GPS">التقنية: BLE 5.0<br>المدى: 50-100 متر<br>تحديث: كل 30 ثانية<br>دعم لغات متعددة</p>
+                </div>
+                <div class="card">
+                    <h3>3️⃣ <span data-ar="الخادم السحابي" data-fr="Serveur Cloud" data-en="Cloud Server">الخادم السحابي</span></h3>
+                    <p data-ar="المنصة: AWS<br>قاعدة البيانات: PostgreSQL<br>التخزين المؤقت: Redis<br>الأمان: AES-256<br>الامتثال: GDPR & HIPAA" data-fr="Plateforme: AWS<br>Base de données: PostgreSQL<br>Cache: Redis<br>Sécurité: AES-256<br>Conformité: GDPR & HIPAA" data-en="Platform: AWS<br>Database: PostgreSQL<br>Cache: Redis<br>Security: AES-256<br>Compliance: GDPR & HIPAA">المنصة: AWS<br>قاعدة البيانات: PostgreSQL<br>الأمان: تشفير AES-256<br>الامتثال: GDPR</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="background-color: var(--bg-light);">
+            <h2 data-ar="📊 مقارنة المواصفات" data-fr="📊 Comparaison des Spécifications" data-en="📊 Specifications Comparison">📊 مقارنة المواصفات</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <tr>
+                        <th data-ar="المكون" data-fr="Composant" data-en="Component">المكون</th>
+                        <th data-ar="النسخة الحالية" data-fr="Version Actuelle" data-en="Current Version">النسخة الحالية</th>
+                        <th data-ar="الحل المقترح" data-fr="Solution Proposée" data-en="Proposed Solution">الحل المقترح</th>
+                        <th data-ar="التحسن" data-fr="Amélioration" data-en="Improvement">التحسن</th>
+                    </tr>
+                    <tr>
+                        <td data-ar="وقت البحث" data-fr="Temps de Recherche" data-en="Search Time">وقت البحث</td>
+                        <td>4-6 ساعات</td>
+                        <td>15 دقيقة</td>
+                        <td data-ar="↑ 1600%" data-fr="↑ 1600%" data-en="↑ 1600%">↑ 1600%</td>
+                    </tr>
+                    <tr>
+                        <td data-ar="نسبة الحل" data-fr="Taux de Résolution" data-en="Resolution Rate">نسبة الحل</td>
+                        <td>85%</td>
+                        <td>100%</td>
+                        <td data-ar="↑ 18%" data-fr="↑ 18%" data-en="↑ 18%">↑ 18%</td>
+                    </tr>
+                    <tr>
+                        <td data-ar="التكلفة لكل حاج" data-fr="Coût par Pèlerin" data-en="Cost per Pilgrim">التكلفة</td>
+                        <td>غير محدد</td>
+                        <td>$25</td>
+                        <td data-ar="توفير 70%" data-fr="Économiser 70%" data-en="Save 70%">توفير 70%</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         PAGE 3: TEAM
+         ============================================ -->
+    <div id="team" class="page">
+        <section class="hero">
+            <h1 data-ar="👥 فريق المشروع" data-fr="👥 Équipe du Projet" data-en="👥 Project Team">👥 فريق المشروع</h1>
+        </section>
+
+        <section class="container">
+            <h2 data-ar="🎯 الفريق المتخصص" data-fr="🎯 Équipe Spécialisée" data-en="🎯 Specialized Team">🎯 الفريق المتخصص</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>👔 <span data-ar="قائد المشروع" data-fr="Chef de Projet" data-en="Project Manager">قائد المشروع</span></h3>
+                    <p data-ar="متخصص في إدارة المشاريع الكبيرة والتنسيق مع الجهات الحكومية والدعم الكامل طوال فترة التنفيذ" data-fr="Spécialisé dans la gestion des grands projets et la coordination avec les autorités gouvernementales" data-en="Specialized in large project management and government coordination">خبرة 15+ سنة في إدارة المشاريع</p>
+                </div>
+                <div class="card">
+                    <h3>💻 <span data-ar="مهندس البرمجيات" data-fr="Ingénieur Logiciel" data-en="Software Engineer">مهندس البرمجيات</span></h3>
+                    <p data-ar="متخصص في تطوير التطبيقات والخوادم السحابية وضمان الأمان في كل خطوة" data-fr="Spécialisé dans le développement d'applications et les serveurs cloud sécurisés" data-en="Specialized in app development and secure cloud servers">خبرة 12+ سنة في تطوير البرمجيات</p>
+                </div>
+                <div class="card">
+                    <h3>🔐 <span data-ar="متخصص الأمان" data-fr="Expert en Sécurité" data-en="Security Expert">متخصص الأمان</span></h3>
+                    <p data-ar="ضمان حماية بيانات الحجاج مع الامتثال الكامل للمعايير الدولية GDPR و HIPAA" data-fr="Assurer la protection des données des pèlerins conformément à GDPR et HIPAA" data-en="Ensure pilgrim data protection with GDPR and HIPAA compliance">خبرة 10+ سنة في الأمن السيبراني</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="background-color: var(--bg-light);">
+            <h2 data-ar="📈 القدرات والمؤهلات" data-fr="📈 Capacités et Qualifications" data-en="📈 Capabilities and Qualifications">📈 القدرات والمؤهلات</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>✅ <span data-ar="التخطيط الاستراتيجي" data-fr="Planification Stratégique" data-en="Strategic Planning">التخطيط الاستراتيجي</span></h3>
+                    <p data-ar="وضع خطط طويلة المدى مع تقييمات دورية وتكييف سريع مع التغييرات" data-fr="Élaboration de plans à long terme avec des évaluations régulières" data-en="Long-term planning with regular assessments">وضع خطط واضحة قابلة للقياس والتقييم</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ <span data-ar="التنفيذ السريع" data-fr="Exécution Rapide" data-en="Fast Execution">التنفيذ السريع</span></h3>
+                    <p data-ar="الالتزام بالجداول الزمنية والموازنات مع ضمان الجودة في كل مرحلة" data-fr="Respect des calendriers et budgets avec assurance qualité" data-en="Meeting timelines and budgets with quality assurance">التزام كامل بالجداول الزمنية والموازنات</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 <span data-ar="التعاون والتواصل" data-fr="Collaboration et Communication" data-en="Collaboration">التعاون والتواصل</span></h3>
+                    <p data-ar="التنسيق الكامل مع جميع الأطراف الحكومية والدولية والشركات الخاصة" data-fr="Coordination complète avec toutes les parties prenantes gouvernementales et internationales" data-en="Full coordination with all government and international stakeholders">تواصل فعال مع جميع الأطراف</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================
+         PAGE 4: CONTACT
+         ============================================ -->
+    <div id="contact" class="page">
+        <section class="hero">
+            <h1 data-ar="📞 تواصل معنا" data-fr="📞 Contactez-nous" data-en="📞 Contact Us">📞 تواصل معنا</h1>
+            <p data-ar="نحن هنا للإجابة على جميع استفساراتك ومساعدتك في تحقيق هذا المشروع المهم" data-fr="Nous sommes là pour répondre à toutes vos questions et vous aider à réaliser ce projet important" data-en="We're here to answer all your questions and help you achieve this important project">نحن هنا لمساعدتك!</p>
+        </section>
+
+        <section class="container">
+            <h2 data-ar="📧 طرق التواصل" data-fr="📧 Moyens de Communication" data-en="📧 Communication Channels">📧 طرق التواصل</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>✉️ <span data-ar="البريد الإلكتروني" data-fr="Email" data-en="Email">البريد الإلكتروني</span></h3>
+                    <p data-ar="البريد الشخصي: " data-fr="Email personnel: " data-en="Personal email: ">البريد الشخصي:<br><a href="mailto:sowabdou092@gmail.com" style="color: var(--primary-color); font-weight: bold;">sowabdou092@gmail.com</a></p>
+                </div>
+                <div class="card">
+                    <h3>📱 <span data-ar="الهاتف" data-fr="Téléphone" data-en="Phone">الهاتف</span></h3>
+                    <p data-ar="رقم التواصل المباشر: +221768777783<br>المأمورية: 24/7 متاح دائماً" data-fr="Ligne Contact Direct: +221768777783<br>Service: 24/7 disponible" data-en="Direct Contact: +221768777783<br>Available: 24/7"><a href="tel:+221768777783" style="color: var(--primary-color); font-weight: bold;">+221768777783</a><br><span data-ar="متاح 24/7" data-fr="Disponible 24/7" data-en="Available 24/7">متاح 24/7</span></p>
+                </div>
+                <div class="card">
+                    <h3>🏢 <span data-ar="المكتب الرسمي" data-fr="Bureau Officiel" data-en="Official Office">المكتب الرسمي</span></h3>
+                    <p data-ar="الموقع: داكار، السنغال<br>الساعات: الأحد - الخميس<br>من 8:00 صباحاً إلى 5:00 مساءً" data-fr="Localisation: Dakar, Sénégal<br>Horaires: dim-jeu 8h-17h<br>Vendredi-Samedi fermé" data-en="Location: Dakar, Senegal<br>Hours: Sun-Thu 8am-5pm<br>Fri-Sat Closed">داكار، السنغال<br>الأحد - الخميس: 8AM-5PM</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="background-color: var(--bg-light);">
+            <h2 data-ar="📝 نموذج التواصل" data-fr="📝 Formulaire de Contact" data-en="📝 Contact Form">📝 نموذج التواصل</h2>
+            <form style="max-width: 600px; margin: 0 auto;">
+                <div style="margin-bottom: 20px;">
+                    <input type="text" placeholder="الاسم الكامل" data-placeholder-ar="الاسم الكامل" data-placeholder-fr="Nom complet" data-placeholder-en="Full Name" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <input type="email" placeholder="البريد الإلكتروني" data-placeholder-ar="البريد الإلكتروني" data-placeholder-fr="Email" data-placeholder-en="Email Address" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <textarea placeholder="رسالتك" data-placeholder-ar="رسالتك" data-placeholder-fr="Votre message" data-placeholder-en="Your message" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; min-height: 150px;"></textarea>
+                </div>
+                <button type="submit" class="btn" data-ar="إرسال الرسالة" data-fr="Envoyer le message" data-en="Send Message">إرسال الرسالة</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-ar="عن المشروع" data-fr="À Propos du Projet" data-en="About Project">عن المشروع</h4>
+                <p data-ar="مشروع بصمة التوجيه هو مبادرة سنغالية لحماية الحجاج والمعتمرين أثناء زيارتهم للحرمين الشريفين" data-fr="Le projet Smart Guide Hub est une initiative sénégalaise pour protéger les pèlerins" data-en="Smart Guide Hub is a Senegalese initiative to protect pilgrims">مشروع شامل لحماية الحجاج والمعتمرين</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-ar="الروابط السريعة" data-fr="Liens Rapides" data-en="Quick Links">الروابط السريعة</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('home'); return false;" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a></li>
+                    <li><a href="#" onclick="showPage('technical'); return false;" data-ar="التقنية" data-fr="Technique" data-en="Technical">التقنية</a></li>
+                    <li><a href="#" onclick="showPage('team'); return false;" data-ar="الفريق" data-fr="Équipe" data-en="Team">الفريق</a></li>
+                    <li><a href="#" onclick="showPage('contact'); return false;" data-ar="الاتصال" data-fr="Contact" data-en="Contact">الاتصال</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-ar="الموارد" data-fr="Ressources" data-en="Resources">الموارد</h4>
+                <ul>
+                    <li><a href="README_FR.md" target="_blank" data-ar="الوثائق الكاملة" data-fr="Documentation Complète" data-en="Full Documentation">الوثائق الكاملة</a></li>
+                    <li><a href="FAQ_Comprehensive.md" target="_blank" data-ar="أسئلة شائعة" data-fr="Questions Fréquentes" data-en="FAQ">أسئلة شائعة</a></li>
+                    <li><a href="Technical_Architecture_Detailed.md" target="_blank" data-ar="المعلومات التقنية" data-fr="Informations Techniques" data-en="Technical Info">المعلومات التقنية</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span data-ar="مشروع بصمة التوجيه السنغالية" data-fr="Projet Smart Guide Hub Sénégal" data-en="Senegal Smart Guide Hub Project">مشروع بصمة التوجيه السنغالية</span> | <span data-ar="جميع الحقوق محفوظة" data-fr="Tous droits réservés"
+                    data-en="All rights reserved">جميع الحقوق محفوظة</span></p>
+            <p style="margin-top: 10px; opacity: 0.6;"><span data-ar="التثنية الدقيقة مفتاح النجاح" data-fr="La précision est la clé du succès" data-en="Precision is the key to success">التثنية الدقيقة مفتاح النجاح</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== PAGE MANAGEMENT ==========
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+
+            // Update nav links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // ========== LANGUAGE MANAGEMENT ==========
+        function changeLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.trim() === (lang === 'ar' ? 'العربية' : lang === 'fr' ? 'Français' : 'English')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update HTML lang and direction
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update ALL translatable elements
+            document.querySelectorAll('[data-ar], [data-fr], [data-en]').forEach(el => {
+                const attr = `data-${lang}`;
+                if (el.hasAttribute(attr)) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = el.getAttribute(attr);
+                    } else {
+                        el.textContent = el.getAttribute(attr);
+                    }
+                    el.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+                }
+            });
+
+            // Update page title
+            const titles = {
+                ar: 'بصمة التوجيه السنغالية - Senegal Smart Guide Hub',
+                fr: 'Guide Intelligent Sénégal - Senegal Smart Guide Hub',
+                en: 'Senegal Smart Guide Hub - Smart Pilgrimage Protection'
+            };
+            document.title = titles[lang];
+
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Animation
+            document.body.style.opacity = '0.8';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 150);
+        }
+
+        // Load saved language on page load
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ar';
+            changeLanguage(savedLang);
+        });
+
+        // Set first nav link as active by default
+        window.addEventListener('load', () => {
+            document.querySelector('nav a').classList.add('active');
+        });
+    </script>
+</body>
+
+</html>
